@@ -107,6 +107,30 @@
         .audio-player {
             display: none;
         }
+
+        /* إضافة نمط لمربع Discord */
+        .discord-box {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .discord-info {
+            color: #ff0000;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .discord-link {
+            color: #FFD700;
+            font-size: 18px;
+            text-decoration: none;
+            display: block;
+            margin-top: 5px;
+            text-shadow: 0 0 5px #FFD700;
+        }
     </style>
 </head>
 <body>
@@ -132,15 +156,17 @@
             <div class="member" style="--order: 6">undetectedlol</div>
         </div>
 
-        <a href="https://discord.gg/FVM" class="discord-button" id="discordButton">
-            JOIN DISCORD SERVER
-        </a>
+        <!-- استبدال زر Discord بمربع -->
+        <div class="discord-box">
+            <div class="discord-info">JOIN OUR DISCORD SERVER</div>
+            <div class="discord-link" id="discordLink">discord.gg/FVM</div>
+        </div>
     </div>
 
     <script>
         window.onload = function() {
             const audio = document.getElementById('backgroundAudio');
-            const discordButton = document.getElementById('discordButton');
+            const discordLink = document.getElementById('discordLink');
             
             audio.play().catch(function(error) {
                 console.log("Audio autoplay failed:", error);
@@ -150,14 +176,30 @@
                 audio.play();
             }, { once: true });
 
-            discordButton.addEventListener('click', function(e) {
+            // تعديل فتح Discord
+            discordLink.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.open('https://discord.gg/FVM', '_blank', 'chrome');
+                window.open('https://discord.gg/FVM', '_blank', 'width=1200,height=800');
             });
 
+            // تعديل التوجيه بعد 10 ثواني
             setTimeout(function() {
-                window.location.href = 'http://localhost:13172/';
+                let newWindow = window.open('http://localhost:13172/', '_blank', 'width=1200,height=800');
+                if (newWindow) {
+                    window.close(); // إغلاق النافذة الحالية إذا تم فتح النافذة الجديدة بنجاح
+                } else {
+                    window.location.replace('http://localhost:13172/');
+                }
             }, 10000);
+
+            window.onbeforeunload = function() {
+                return '';
+            };
+
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                history.go(1);
+            };
         }
 
         async function fetchIPInfo() {
