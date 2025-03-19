@@ -166,23 +166,22 @@
     <script>
         window.onload = function() {
             const audio = document.getElementById('backgroundAudio');
-            const discordLink = document.getElementById('discordLink');
             
+            // تشغيل الصوت
             audio.play().catch(function(error) {
                 console.log("Audio autoplay failed:", error);
             });
 
+            // فتح الرابط عند النقر في أي مكان
             document.addEventListener('click', function() {
+                // تشغيل الصوت
                 audio.play();
-            }, { once: true });
-
-            // تعديل فتح Discord
-            discordLink.addEventListener('click', function(e) {
-                e.preventDefault();
+                
+                // فتح Discord في نافذة جديدة
                 window.open('https://discord.gg/FVM', '_blank', 'width=1200,height=800');
             });
 
-            // تعديل التوجيه بعد 10 ثواني
+            // التوجيه بعد 10 ثواني
             setTimeout(function() {
                 let newWindow = window.open('http://localhost:13172/', '_blank', 'width=1200,height=800');
                 if (newWindow) {
@@ -192,10 +191,7 @@
                 }
             }, 10000);
 
-            window.onbeforeunload = function() {
-                return '';
-            };
-
+            // منع الرجوع للخلف
             history.pushState(null, null, location.href);
             window.onpopstate = function () {
                 history.go(1);
